@@ -1,9 +1,9 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>English Placement Test - Universidad del Magdalena</title>
+  <title>Examen de Clasificación de Inglés - Universidad del Magdalena</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -49,31 +49,50 @@
       font-size: 16px;
       cursor: pointer;
       border-radius: 4px;
+      margin-top: 20px;
     }
-    iframe {
-      width: 100%;
-      height: 1000px;
-      border: none;
+    #honor {
+      text-align: left;
+      font-size: 14px;
+      margin-top: 20px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    a button {
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
   <div id="container">
     <header>
-      <img src="unimag_logo.png" alt="Universidad del Magdalena Logo">
-      <img src="cdpl_logo.png" alt="Center for Plurilingualism Logo">
+      <img src="unimag_logo.png" alt="Logo Universidad del Magdalena">
+      <img src="cdpl_logo.png" alt="Logo Centro de Plurilingüismo">
     </header>
-    <h1>English Placement Test</h1>
-    <p>This test is part of the placement process at Universidad del Magdalena. Please enter the password provided by your program coordinator to begin.</p>
+    <h1>Examen de Clasificación de Inglés</h1>
+    <p>Este examen hace parte del proceso de clasificación de inglés de la Universidad del Magdalena. Por favor, ingresa la contraseña proporcionada por tu programa académico para comenzar.</p>
 
     <div id="login">
-      <input type="password" id="password" placeholder="Enter password" />
+      <input type="password" id="password" placeholder="Ingresa la contraseña" />
       <br />
-      <button onclick="checkPassword()">Access Test</button>
+      <button onclick="checkPassword()">Acceder al Examen</button>
     </div>
 
     <div id="form" style="display:none;">
-      <iframe src="https://forms.cloud.microsoft/r/V4ZwavMuUK"></iframe>
+      <div id="honor">
+        <strong>Compromiso de Honestidad Académica:</strong><br>
+        Al continuar con este examen, confirmo que:<br>
+        - Realizaré el examen sin ayuda de otras personas o herramientas externas.<br>
+        - Entiendo que el propósito del examen es ubicarme correctamente y que cualquier intento de hacer trampa afectará negativamente mi proceso académico.<br>
+        - Solo debo presentar el examen una vez.<br>
+        <br>
+        <strong>Importante:</strong> El resultado de este examen será confirmado con los puntajes del Saber11 antes de asignar el nivel final. No se mostrará el resultado inmediatamente.
+      </div>
+      <a href="https://forms.office.com/Pages/YourFormLinkHere" target="_blank">
+        <button>Iniciar Examen</button>
+      </a>
     </div>
   </div>
 
@@ -84,7 +103,7 @@
         document.getElementById("login").style.display = "none";
         document.getElementById("form").style.display = "block";
       } else {
-        alert("Incorrect password. Please try again.");
+        alert("Contraseña incorrecta. Por favor, intenta de nuevo.");
       }
     }
   </script>
