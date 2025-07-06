@@ -60,6 +60,12 @@
       border-radius: 6px;
       border: 1px solid #ccc;
     }
+    #timer {
+      font-size: 18px;
+      font-weight: bold;
+      color: #d9534f;
+      margin-top: 15px;
+    }
     a button {
       text-decoration: none;
     }
@@ -74,7 +80,29 @@
     <h1>Examen de Clasificación de Inglés</h1>
     <p>Este examen hace parte del proceso de clasificación de inglés de la Universidad del Magdalena. Por favor, ingresa la contraseña proporcionada por tu programa académico para comenzar.</p>
 
-    <div id="login">
+    
+<div id="info" style="text-align: left; font-size: 14px; margin-top: 25px; background-color: #fff; padding: 20px; border-radius: 6px; border: 1px solid #ccc;">
+  <h2 style="color: #005691;">Examen de Diagnóstico de inglés – Universidad del Magdalena</h2>
+  <p><strong>¿En qué consiste este examen?</strong><br>
+  Este examen tiene como objetivo diagnosticar tu nivel de inglés como lengua extranjera, así como evaluar tus conocimientos generales del español. Está diseñado exclusivamente con fines de clasificación, por lo tanto, no se aprueba ni se reprueba.</p>
+
+  <p><strong>¿Por qué es importante hacerlo?</strong><br>
+  Los resultados nos ayudarán a ubicarte en el nivel adecuado del programa de inglés, y a identificar posibles áreas de mejora. Además, se compararán con los puntajes de la prueba Saber 11 para garantizar la coherencia de los resultados. En algunos casos, podría resultarse necesario la aplicación de un examen oral adicional. Por eso, es fundamental que lo hagas con honestidad y sin apoyos externos.</p>
+
+  <p><strong>¿Cómo está estructurado?</strong><br>
+  El examen consta de dos partes:</p>
+  <ul>
+    <li>Evaluación de español (lengua materna) – <strong>Duración: 30 minutos</strong></li>
+    <li>Evaluación escrita de inglés (General English) – <strong>Duración: 90 minutos</strong></li>
+  </ul>
+
+  <p><strong>¿Hasta dónde debo responder?</strong><br>
+  Debes completar al menos el nivel A1/A2 de inglés. Si te sientes capaz de continuar, puedes avanzar tanto como tu conocimiento lo permita. Si llegas a una parte demasiado difícil, puedes dejar de responder esa sección y finalizar el examen enviándolo.</p>
+
+  <p><strong>¡Tu sinceridad es clave en este proceso!</strong></p>
+</div>
+
+<div id="login">
       <input type="password" id="password" placeholder="Ingresa la contraseña" />
       <br />
       <button onclick="checkPassword()">Acceder al Examen</button>
@@ -86,11 +114,11 @@
         Al continuar con este examen, confirmo que:<br>
         - Realizaré el examen sin ayuda de otras personas o herramientas externas.<br>
         - Entiendo que el propósito del examen es ubicarme correctamente y que cualquier intento de hacer trampa afectará negativamente mi proceso académico.<br>
-        - Solo debo presentar el examen una vez.<br>
-        <br>
+        - Solo debo presentar el examen una vez.<br><br>
         <strong>Importante:</strong> El resultado de este examen será confirmado con los puntajes del Saber11 antes de asignar el nivel final. No se mostrará el resultado inmediatamente.
       </div>
-      <a href="https://forms.cloud.microsoft/r/V4ZwavMuUK" target="_blank">
+      <div id="timer">Tiempo restante: 120:00</div>
+      <a href="https://forms.office.com/Pages/YourFormLinkHere" target="_blank">
         <button>Iniciar Examen</button>
       </a>
     </div>
@@ -102,9 +130,26 @@
       if (input === "ingles2025") {
         document.getElementById("login").style.display = "none";
         document.getElementById("form").style.display = "block";
+        startTimer(120 * 60, document.getElementById('timer'));
       } else {
         alert("Contraseña incorrecta. Por favor, intenta de nuevo.");
       }
+    }
+
+    function startTimer(duration, display) {
+      var timer = duration, minutes, seconds;
+      var countdown = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        display.textContent = "Tiempo restante: " + minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          clearInterval(countdown);
+          display.textContent = "¡Tiempo finalizado! Por favor, asegúrate de haber enviado el formulario.";
+        }
+      }, 1000);
     }
   </script>
 </body>
